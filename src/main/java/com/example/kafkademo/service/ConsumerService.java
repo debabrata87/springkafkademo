@@ -36,7 +36,7 @@ public class ConsumerService {
 			containerFactory = "kafkaListenerContainerFactory" )
 	public void listenToPartition0(@Payload MyMessage message,
 		                               @Header(KafkaHeaders.RECEIVED_PARTITION) String partition) {
-		    System.out.println("Received message from partition " + partition + ": " + message);
+		    System.out.println("Received Input Message from partition " + partition + ", Message : " + message);
 	}
 
 }
