@@ -16,6 +16,23 @@ public class RestControllerForKafka {
 	@Autowired
 	private  ProducerService producer;
 
+	/*
+	* In power shell windows
+	# Define the URL of your REST endpoint
+	$url = "http://localhost:8087/kafkademo/send"
+
+	#Define the JSON payload
+	$body = @{
+    	id = "3"
+    	content = "Hello Kafka msg3 !"
+	} | ConvertTo-Json
+
+	# Send the POST request with JSON content type
+	Invoke-RestMethod -Uri $url -Method Post -Body $body -ContentType "application/json"
+	 
+	*/
+	
+	
     @PostMapping("/send")
     public String send(@RequestBody MyMessage message) {
         producer.sendMessageToTopic(message);
