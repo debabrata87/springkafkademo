@@ -18,8 +18,6 @@ import java.util.*;
 @Configuration
 public class KafkaConsumerConfig {
 
-	@Autowired
-	KafkaTemplate<String , String> kafkatemplate;
 	
 	
 	@Autowired
