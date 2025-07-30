@@ -1,0 +1,22 @@
+Apache Kafka Local on My Personal Machince in Powershell
+
+C:\tmp\zookeeper and C:\tmp\kafka-logs delete this 2 forfresh start  
+
+zookeeper 
+C:\kafka> .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+Start Kafka Broker (after Zookeeper starts)
+C:\kafka> .\bin\windows\kafka-server-start.bat .\config\server.properties
+
+
+Delete the Topic (Optional if auto-creation is disabled)
+C:\kafka>.\bin\windows\kafka-topics.bat --delete --topic my-message-topic --bootstrap-server localhost:9092
+
+Create the Topic (Optional if auto-creation is disabled)
+C:\kafka> .\bin\windows\kafka-topics.bat --create --topic my-message-topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+
+C:\kafka>.\bin\windows\kafka-console-producer.bat --topic my-message-topic --bootstrap-server localhost:9092
+{"id":"1", "content":"Hello Kafka!"}
+
+Start Console Consumer to See Messages
+C:\kafka> .\bin\windows\kafka-console-consumer.bat --topic my-message-topic --from-beginning --bootstrap-server localhost:9092
